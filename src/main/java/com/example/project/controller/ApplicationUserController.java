@@ -57,8 +57,14 @@ public class ApplicationUserController {
 		
 	}
 
-	@GetMapping("viewprofile/{userid}")
+	@GetMapping("viewprofile/{userId}")
 	public ResponseEntity<?> getUserByUserid(@PathVariable String userId){
 		return service.getUser(userId);
+	}
+	
+	@PostMapping("editprofile/{userId}")
+	public ResponseEntity<?> editProfile(@RequestBody ApplicationUser user,@PathVariable String userId){
+		
+		return service.update(user,userId);
 	}
 }
